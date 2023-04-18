@@ -5,11 +5,17 @@ import Lottie from 'lottie-react'
 import namme from './aname.json'
 // animation files eands 
 
+import Marquee from "react-fast-marquee";
+
 const Banner = () => {
     return (
         <div>
             <div className='text-center mt-5'>
-                <h1></h1>
+                <h1 className='p-3 bg-gray-200 rounded-lg w-11/12 text-gray-700-400 mx-auto'>
+                    <Marquee className='text-lg' speed={200}>
+                        <span className='text-bold text-3xl text-orange-500'>Hi</span> there there are so many hotels  for you
+                    </Marquee>
+                </h1>
             </div>
 
             <section className=' h-screen items-center w-full mt-5 flex'>
