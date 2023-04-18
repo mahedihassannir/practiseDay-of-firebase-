@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { contex } from '../Contex/Contex';
+import { sendEmailVerification } from 'firebase/auth';
 
 const Register = () => {
+    let { handleRegister } = useContext(contex)
 
+    let [err, setErr] = useState("")
     let on = (event) => {
+
 
         event.preventDefault()
         let form = event.target
@@ -14,6 +19,25 @@ const Register = () => {
         let Confirm = form.confirm.value
 
         console.log(name, password, email, Confirm);
+
+        handleRegister(email, password)
+            .then(res => {
+                let remaning = res.user
+                console.log(remaning);
+                setErr(remaning)
+
+                verifaction(res.user)
+            })
+            .catch(error => {
+                console.error(error);
+                setErr(error)
+            })
+
+        let verifaction = (user) => {
+            sendEmailVerification(user)
+            alert("verify your email")
+
+        }
 
         if (password !== Confirm) {
             alert("password is not match")

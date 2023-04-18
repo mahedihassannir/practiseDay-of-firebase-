@@ -15,6 +15,7 @@ import About from './Components/About.jsx/About';
 import Contact from './Contact/Contact';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
+import Contex from './Components/Contex/Contex';
 
 let router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ let router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+
+    <Contex>
+      <RouterProvider router={router}></RouterProvider>
+    </Contex>
+
   </React.StrictMode>,
 )
